@@ -208,7 +208,7 @@ clk_div #(
 
 clk_div #( 
     .CLK_IN_HZ  (12_000_000),
-    .CLK_OUT_HZ (20)
+    .CLK_OUT_HZ (1500)
 )div2(
     .i_clkin    (sysclk),  
     .i_rstn     (rstn),   
@@ -267,13 +267,6 @@ drv_mcp3202 adc_u0 (
     .adc_cs    (adc_csn)
 );
 
-random_sampler #(.DATA_WIDTH(12), .COUNTER_WIDTH(17)) rng_sampler (
-    .clk(sysclk),
-    .rst_n(rstn),
-    .processed_signal(adc_data),   // or whatever signal they provide
-    .seed(seed_from_sampler),
-    .seed_valid(seed_valid)
-);
 
 endmodule
 
